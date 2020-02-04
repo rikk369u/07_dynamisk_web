@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="">
 
 <head>
     <meta charset="utf-8">
@@ -10,27 +10,26 @@
 
 <body>
 
+    <input type="text" id="længde">
+    <input type="text" id="bredde">
+    <button id="knap">Beregn</button>
+
     <script>
-        let længde = prompt("Angiv længde");
-        let bredde = prompt("Angiv bredde");
+        document.querySelector("#knap").addEventListener("click", klikPåKnap)
 
-        function areal(l, b) {
-            let a = (l * b);
-            if (a == 0) {
-                return (`Husk længde og bredde skal være tal. \n Prøv igen`)
-            } else if (isNaN(a)) {
-                return (`Fejl. \n Prøv igen med tal`)
+        function klikPåKnap() {
+            //console.log ("knap klik");
+            let længde = document.querySelector("#længde").value;
+            let bredde = document.querySelector("#bredde").value;
+            let resultat = længde * bredde;
+            console.log("resultat", resultat);
+
+            if (isNaN(længde) == true || isNaN(bredde) == true) {
+                resultat = "Den er gal";
             } else {
-                return ('Arealet er ${a}. \n Vil du lave et nyt areal?')
+                resultat = længde * bredde;
             }
-        }
 
-        let resultat = areal(længde, bredde);
-
-        confirm(resultat);
-
-        if (confirm) {
-            location.reload();
         }
 
     </script>

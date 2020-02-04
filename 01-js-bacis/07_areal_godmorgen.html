@@ -9,28 +9,25 @@
 </head>
 
 <body>
+
     <script>
-        new Date().getHours()
+        let time = new Date().getHours();
+        let hilsen;
+        if (time <= 5) {
+            hilsen = "Godnat";
 
-        if (klokken <= 5 && klokken <= 10) {
-            resultat = "Godmorgen";
+        } else if (time > 10) {
+            hilsen = "Godmorgen";
+        } else if (time < 18) {
+            hilsen = "Goddag";
+        } else {
+            hilsen = "Godaften";
         }
 
-        if (klokken >= 10 && klokken <= 18) {
-            resultat = "Goddag";
-        }
-
-        if (klokken >= 18 && klokken <= 24) {
-            resultat = "Godaften";
-        }
-
-        if (klokken >= 24 && klokken <= 5) {
-            resultat = "Godnat";
-        }
-
-        console.log(resultat);
+        console.log(hilsen);
 
     </script>
+
 </body>
 
 </html>
