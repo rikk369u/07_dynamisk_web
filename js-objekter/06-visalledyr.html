@@ -7,10 +7,25 @@
     <title></title>
     <link rel="stylesheet" href="">
 </head>
+<style>
+    article {
+        border: 1px solid black;
+
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax (300px, 1fr));
+        max-width: 1000px;
+        margin: 0 auto;
+        grid-gap: 10px;
+
+    }
+</style>
 
 <body>
 
-    <section class="liste"></section>
+
 
     <template>
         <article class="dyr">
@@ -21,7 +36,7 @@
         </article>
     </template>
 
-
+    <main></main>
 
     <script>
         document.addEventListener("DOMContentLoaded", visDyr);
@@ -64,7 +79,8 @@
         ]
 
         function visDyr() {
-            const container = document.querySelector(".liste");
+
+            const container = document.querySelector("main");
             const dyrTemplate = document.querySelector("template");
             dyr.forEach(arter => {
                 let klon = dyrTemplate.cloneNode(true).content;
@@ -79,8 +95,5 @@
 
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
