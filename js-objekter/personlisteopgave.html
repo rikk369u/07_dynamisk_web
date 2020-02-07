@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    article {
+        border: 1px solid black;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        max-width: 1000px;
+        margin: 0 auto;
+        grid-gap: 10px;
+    }
+</style>
+
+<body>
+
+    <template>
+        <article class="person">
+            <h2></h2>
+            <p class="id"></p>
+            <p class="efternavn"></p>
+            <p class="sex"></p>
+            <p class="alder"></p>
+            <p class="religion"></p>
+            <p class="hobby"></p>
+            <p class="kaeledyr"></p>
+            <p class="job"></p>
+            <p class="by"></p>
+            <p class="rpc"></p>
+            <img src="" alt="">
+        </article>
+    </template>
+
+    <main></main>
+
+    <script>
+        const endpoint = "https://spreadsheets.google.com/feeds/list/1XWWbfWszD7f4jHqp51V_oT3pkHuR-ceEUw4YtrvK7F0/od6/public/values?alt=json";
+        let personer = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            hentData();
+        }
+
+        async function hentData() {
+            const response = await fetch(endpoint);
+            console.log(response);
+            personer = await response.json();
+            console.log(personer);
+            visPersoner();
+        }
+
+        //data fra array ligger i json fil - alledyr.json
+
+        function visPersoner() {
+
+            const container = document.querySelector("main");
+            const personerTemplate = document.querySelector("template");
+
+            personer.feed.entry.forEach((person) => {
+                let klon = personerTemplate.cloneNode(true).content;
+                klon.querySelector(".id").textContent = person.gsx$id.$t;
+                klon.querySelector("h2").textContent = person.gsx$navn.$t;
+                klon.querySelector(".efternavn").textContent = person.gsx$efternavn.$t;
+                klon.querySelector(".sex").textContent = person.gsx$sex.$t;
+                klon.querySelector(".alder").textContent = person.gsx$alder.$t;
+                klon.querySelector(".religion").textContent = person.gsx$religion.$t;
+                klon.querySelector(".hobby").textContent = person.gsx$hobby.$t;
+                klon.querySelector("img").src = person.gsx$billede.$t;
+                klon.querySelector(".kaeledyr").textContent = person.gsx$kaeledyr.$t;
+                klon.querySelector(".job").textContent = person.gsx$job.$t;
+                klon.querySelector(".by").textContent = person.gsx$by.$t;
+                klon.querySelector(".rpc").textContent = person.gsx$rpc.$t;
+
+                container.appendChild(klon);
+            })
+        }
+    </script>
+</body></html>
