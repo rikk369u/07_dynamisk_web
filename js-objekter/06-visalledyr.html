@@ -21,7 +21,6 @@
         grid-gap: 10px;
 
     }
-
 </style>
 
 <body>
@@ -40,9 +39,22 @@
     <main></main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", visDyr);
+        document.addEventListener("DOMContentLoaded", start);
 
         let alledyr = [];
+
+        function start() {
+            hentData();
+
+        }
+
+        async function hentData() {
+            const response = await fetch("alledyr.json");
+            console.log(response);
+            alledyr = await response.json();
+            console.log(alledyr);
+            visDyr();
+        }
 
         //data fra array ligger i json fil - alledyr.json
 
@@ -50,12 +62,12 @@
 
             const container = document.querySelector("main");
             const dyrTemplate = document.querySelector("template");
-            dyr.forEach(arter => {
+            alledyr.forEach(dyr => {
                 let klon = dyrTemplate.cloneNode(true).content;
-                klon.querySelector("h3").textContent = arter.fornavn;
-                klon.querySelector(".type").textContent = arter.type;
-                klon.querySelector(".levested").textContent = arter.levested;
-                klon.querySelector("img").src = arter.billede;
+                klon.querySelector("h3").textContent = dyr.fornavn;
+                klon.querySelector(".type").textContent = dyr.type;
+                klon.querySelector(".levested").textContent = dyr.levested;
+                klon.querySelector("img").src = dyr.billede;
                 container.appendChild(klon);
 
 
@@ -63,8 +75,5 @@
 
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
