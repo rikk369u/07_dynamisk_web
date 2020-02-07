@@ -21,6 +21,7 @@
         grid-gap: 10px;
 
     }
+
 </style>
 
 <body>
@@ -41,42 +42,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", visDyr);
 
-        let dyr = [{
-                "fornavn": "gris",
-                "type": "pattedyr",
-                "levested": "svinefarm",
-                "billede": "http://mabe-kea.dk/E19/pics/pig.png"
-            },
+        let alledyr = [];
 
-            {
-                "fornavn": "frø",
-                "type": "anfibie",
-                "levested": "skov",
-                "billede": "http://mabe-kea.dk/E19/pics/frog.png"
-            },
-
-            {
-                "fornavn": "ræv",
-                "type": "pattedyr",
-                "levested": "skov",
-                "billede": "http://mabe-kea.dk/E19/pics/fox.png"
-            },
-
-            {
-                "fornavn": "sild",
-                "type": "fisk",
-                "levested": "vand",
-                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
-            },
-
-            {
-                "fornavn": "krokodille",
-                "type": "krybdyr",
-                "levested": "flod",
-                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
-            }
-
-        ]
+        //data fra array ligger i json fil - alledyr.json
 
         function visDyr() {
 
@@ -95,5 +63,8 @@
 
 
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
